@@ -18,10 +18,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-bg-[#000] tw-text-white">
-<div class="cursor">
-    <img src="./assets/cursor-pointer.svg" alt="cursor" />
-    <div class="cursor-div">You</div>
-</div>
+<!--<div class="cursor">-->
+<!--    <img src="./assets/cursor-pointer.svg" alt="cursor" />-->
+<!--    <div class="cursor-div">You</div>-->
+<!--</div>-->
 <header class="tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-px-[10%] max-md:tw-mr-auto md:tw-justify-around">
     <div class="tw-flex tw-h-[60px] tw-w-[80px]"></div>
     <div class="collapsible-header animated-collapse max-md:tw-shadow-lg max-md:tw-drop-shadow-xl" id="collapsed-items">
@@ -42,7 +42,7 @@
 <section class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
     <h1 class="tw-mt-8 tw-text-8xl tw-font-medium max-md:tw-text-4xl">Onda Mecanica</h1>
     <h2 class="tw-mt-8 tw-text-4xl tw-font-medium max-md:tw-text-4xl tw-text-center">Audio engineering solutions</h2>
-    <div class="tw-mt-8 tw-max-w-[400px] tw-text-justify tw-text-gray-200">
+    <div class="tw-mt-8 tw-max-w-[800px] tw-text-justify tw-text-gray-200">
         Onda Mecânica specializes in audio solutions, including sound system design and implementation, music production, creative audio content, acoustic projects, and consulting services. We handle live sound, fixed installations, technical direction, and offer comprehensive music production services. Our expertise extends to creating custom audio content and providing tailored acoustic treatments. We are committed to delivering high-quality sound that aligns with the artistic vision of each project.
     </div>
     <div class="tw-mt-4 tw-flex tw-gap-4 tw-text-2xl">
@@ -63,33 +63,50 @@
     <div class="sliding-image-gradient tw-absolute tw-left-0 tw-top-0 tw-z-10 tw-h-full tw-w-full"></div>
 </section>
 
-<!-- New sections -->
-<section id="who_we_are" class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
-    <h2 class="tw-mt-8 tw-text-4xl tw-font-medium">Onda Mecânica – Who We Are</h2>
-
-</section>
-
 <section id="what_we_do" class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
     <h2 class="tw-mt-8 tw-text-4xl tw-font-medium">What We Do</h2>
-    <p class="tw-mt-4 tw-max-w-[800px] tw-text-justify tw-text-gray-200">
-    <p class="tw-mt-4 tw-max-w-[800px] tw-text-justify tw-text-gray-200">
-        Onda Mecânica positions itself as a specialized company in the development of audio solutions. Our services and areas of expertise include:
-    </p>
-    <p class="tw-mt-4 tw-max-w-[800px] tw-text-justify tw-text-gray-200">
-        <strong>1. Sound System Design & Implementation</strong><br>
-        • Live Sound – In collaboration with clients and partners, Onda Mecânica handles the entire system design, setup, calibration, and operation during events. Each stage can be carried out separately based on project needs, though we prioritize full-project execution.<br>
-        • Fixed Sound System Installations – We analyze each space’s acoustic needs and design tailored sound system solutions by selecting and integrating the most suitable equipment from trusted brands, ensuring optimal performance.<br>
-        • Technical Direction for Events & Venues – We oversee all sound-related aspects, including assembling specialized teams, optimizing sound systems, performing regular maintenance, and suggesting additional equipment. If a venue lacks the necessary equipment for an event, we leverage our extensive partner network to find the best rental solutions, handling logistics from start to finish. Our long-term goal is to build an in-house equipment inventory to meet these demands. Additionally, we manage technical riders and act as a bridge between artists and event organizers.<br>
-        <strong>2. Music Production (Recording, Editing, Mixing & Mastering)</strong><br>
-        Onda Mecânica offers services across all three stages of music production. We adapt resources to each project, including facilitating connections with recording studios that best suit the desired sound. Each service can be provided independently or as a complete package.<br>
-        <strong>3. Creative Audio Content (Sound Design)</strong><br>
-        We create custom audio content for artistic installations, exhibitions, and other creative projects.<br>
-        <strong>4. Acoustic Projects & Implementation</strong><br>
-        We offer acoustic treatment solutions for various spaces and conduct standardized acoustic assessments to enhance sound performance.<br>
-        <strong>5. Consulting Services</strong><br>
-        In all these areas, Onda Mecânica provides expert consultancy, with the option for third-party implementation of the proposed solutions.
-    </p>
+    <div class="tw-mt-4 tw-max-w-[800px] tw-text-justify tw-text-gray-200">
+        <div class="tw-mb-6">
+            <strong class="tw-cursor-pointer tw-block tw-mb-2 tw-ml-4" onclick="toggleDescription('desc1')">1. Sound System Design & Implementation</strong>
+            <div id="desc1" class="tw-hidden tw-mb-4 tw-pl-4 tw-pt-2">
+                • Live Sound – In collaboration with clients and partners, Onda Mecânica handles the entire system design, setup, calibration, and operation during events. Each stage can be carried out separately based on project needs, though we prioritize full-project execution.<br>
+                • Fixed Sound System Installations – We analyze each space’s acoustic needs and design tailored sound system solutions by selecting and integrating the most suitable equipment from trusted brands, ensuring optimal performance.<br>
+                • Technical Direction for Events & Venues – We oversee all sound-related aspects, including assembling specialized teams, optimizing sound systems, performing regular maintenance, and suggesting additional equipment. If a venue lacks the necessary equipment for an event, we leverage our extensive partner network to find the best rental solutions, handling logistics from start to finish. Our long-term goal is to build an in-house equipment inventory to meet these demands. Additionally, we manage technical riders and act as a bridge between artists and event organizers.
+            </div>
+        </div>
+        <div class="tw-mb-6">
+            <strong class="tw-cursor-pointer tw-block tw-mb-2 tw-ml-4" onclick="toggleDescription('desc2')">2. Music Production (Recording, Editing, Mixing & Mastering)</strong>
+            <div id="desc2" class="tw-hidden tw-mb-4 tw-pl-4 tw-pt-2">
+                Onda Mecânica offers services across all three stages of music production. We adapt resources to each project, including facilitating connections with recording studios that best suit the desired sound. Each service can be provided independently or as a complete package.
+            </div>
+        </div>
+        <div class="tw-mb-6">
+            <strong class="tw-cursor-pointer tw-block tw-mb-2 tw-ml-4" onclick="toggleDescription('desc3')">3. Creative Audio Content (Sound Design)</strong>
+            <div id="desc3" class="tw-hidden tw-mb-4 tw-pl-4 tw-pt-2">
+                We create custom audio content for artistic installations, exhibitions, and other creative projects.
+            </div>
+        </div>
+        <div class="tw-mb-6">
+            <strong class="tw-cursor-pointer tw-block tw-mb-2 tw-ml-4" onclick="toggleDescription('desc4')">4. Acoustic Projects & Implementation</strong>
+            <div id="desc4" class="tw-hidden tw-mb-4 tw-pl-4 tw-pt-2">
+                We offer acoustic treatment solutions for various spaces and conduct standardized acoustic assessments to enhance sound performance.
+            </div>
+        </div>
+        <div class="tw-mb-6">
+            <strong class="tw-cursor-pointer tw-block tw-mb-2 tw-ml-4" onclick="toggleDescription('desc5')">5. Consulting Services</strong>
+            <div id="desc5" class="tw-hidden tw-mb-4 tw-pl-4 tw-pt-2">
+                In all these areas, Onda Mecânica provides expert consultancy, with the option for third-party implementation of the proposed solutions.
+            </div>
+        </div>
+    </div>
 </section>
+
+<script>
+    function toggleDescription(id) {
+        const desc = document.getElementById(id);
+        desc.classList.toggle('tw-hidden');
+    }
+</script>
 
 <section id="mission_values" class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
     <h2 class="tw-mt-8 tw-text-4xl tw-font-medium">Our Mission & Values</h2>

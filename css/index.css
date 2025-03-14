@@ -3,13 +3,13 @@
 html {
     scroll-behavior: smooth;
     background-color: #000;
-    cursor: none;
+    /*cursor: none;*/
 }
 
 
-a, button {
-    cursor: none;
-}
+/*a, button {*/
+/*    cursor: none;*/
+/*}*/
 
 header {
     background-color: #000000;
@@ -72,28 +72,28 @@ header > .collapsible-header {
     color: #fff !important;
 }
 
-.cursor {
-    width: 20px;
-    height: 20px;
-    position: fixed;
-    background-color: transparent;
-    pointer-events: none; /* Prevent it from interfering with mouse events */
-    z-index: 9999;
-    display: none; 
-}
+/*.cursor {*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    position: fixed;*/
+/*    background-color: transparent;*/
+/*    pointer-events: none; !* Prevent it from interfering with mouse events *!*/
+/*    z-index: 9999;*/
+/*    display: none; */
+/*}*/
 
-.cursor-div {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    font-size: small;
-    font-weight: 500;
-    padding: 4px 8px;
-    /* border: 1px solid #000; */
-    color: #fff;
-    background-color: #fd343e;
-    box-shadow: 0px 0px 10px 1px #f40a15d5;
-}
+/*.cursor-div {*/
+/*    position: absolute;*/
+/*    left: 20px;*/
+/*    top: 20px;*/
+/*    font-size: small;*/
+/*    font-weight: 500;*/
+/*    padding: 4px 8px;*/
+/*    !* border: 1px solid #000; *!*/
+/*    color: #fff;*/
+/*    background-color: #fd343e;*/
+/*    box-shadow: 0px 0px 10px 1px #f40a15d5;*/
+/*}*/
 
 .cursive-text {
     font-family: 'Dancing Script', cursive;

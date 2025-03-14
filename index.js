@@ -75,35 +75,35 @@ dropdowns.forEach(dropdown => new Dropdown(`#${dropdown.id}`))
 
 const cursor = document.querySelector('.cursor')
 
-function isTouchDevice() {
-	return (('ontouchstart' in window) ||
-	   (navigator.maxTouchPoints > 0) ||
-	   (navigator.msMaxTouchPoints > 0))
-}
+// function isTouchDevice() {
+// 	return (('ontouchstart' in window) ||
+// 	   (navigator.maxTouchPoints > 0) ||
+// 	   (navigator.msMaxTouchPoints > 0))
+// }
+//
+// function cursorPosUpdate(e){
+// 	cursor.style.display = 'block'
+// 	cursor.style.left = e.clientX + 'px'
+// 	cursor.style.top = e.clientY + 'px'
+// }
+//
+// function hideCursor(){
+// 	cursor.style.display = 'none'
+//
+// }
 
-function cursorPosUpdate(e){
-	cursor.style.display = 'block'
-	cursor.style.left = e.clientX + 'px'
-	cursor.style.top = e.clientY + 'px'
-}
-
-function hideCursor(){
-	cursor.style.display = 'none'
-
-}
-
-function addCursorListeners(){
-	if (!isTouchDevice() || window.innerWidth > RESPONSIVE_WIDTH) {
-		document.addEventListener('mousemove', cursorPosUpdate)
-		window.addEventListener("blur", hideCursor)
-	} else {
-		hideCursor()
-		document.removeEventListener('mousemove', cursorPosUpdate)
-		window.removeEventListener("blur", hideCursor)
-	}
-}
-
-addCursorListeners()
+// function addCursorListeners(){
+// 	if (!isTouchDevice() || window.innerWidth > RESPONSIVE_WIDTH) {
+// 		document.addEventListener('mousemove', cursorPosUpdate)
+// 		window.addEventListener("blur", hideCursor)
+// 	} else {
+// 		hideCursor()
+// 		document.removeEventListener('mousemove', cursorPosUpdate)
+// 		window.removeEventListener("blur", hideCursor)
+// 	}
+// }
+//
+// addCursorListeners()
 
 
 window.addEventListener("resize", () => {
