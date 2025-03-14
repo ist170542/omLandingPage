@@ -111,6 +111,7 @@ const slidingImageContainer = document.querySelector("#sliding-images")
  * Contains the sliding image path
  */
 const images = [
+    "./assets/images/slideshow/IMG-20250314-WA0040.jpg",
     "./assets/images/slideshow/IMG-20250314-WA0013.jpg",
     "./assets/images/slideshow/IMG-20250314-WA0014.jpg",
     "./assets/images/slideshow/IMG-20250314-WA0015.jpg",
@@ -121,13 +122,12 @@ const images = [
     "./assets/images/slideshow/IMG-20250314-WA0020.jpg",
     "./assets/images/slideshow/IMG-20250314-WA0021.jpg",
     "./assets/images/slideshow/IMG-20250314-WA0022.jpg",
-    "./assets/images/slideshow/IMG-20250314-WA0023.jpg",
-    "./assets/images/slideshow/IMG-20250314-WA0024.jpg",
-    "./assets/images/slideshow/IMG-20250314-WA0025.jpg",
-    "./assets/images/slideshow/IMG-20250314-WA0026.jpg",
-    "./assets/images/slideshow/IMG-20250314-WA0027.jpg",
     "./assets/images/slideshow/IMG-20250314-WA0028.jpg",
     "./assets/images/slideshow/IMG-20250314-WA0029.jpg",
+    "./assets/images/slideshow/IMG-20250314-WA0037.jpg",
+    "./assets/images/slideshow/IMG-20250314-WA0037.jpg",
+    "./assets/images/slideshow/IMG-20250314-WA0042.jpg",
+    "./assets/images/slideshow/IMG-20250314-WA0041.jpg",
 ]
 
 function addSlidingImages(img){
