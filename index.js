@@ -73,7 +73,7 @@ window.addEventListener("resize", responsive)
 const dropdowns = document.querySelectorAll('.dropdown')
 dropdowns.forEach(dropdown => new Dropdown(`#${dropdown.id}`))
 
-const cursor = document.querySelector('.cursor')
+// const cursor = document.querySelector('.cursor')
 
 // function isTouchDevice() {
 // 	return (('ontouchstart' in window) ||
@@ -104,15 +104,6 @@ const cursor = document.querySelector('.cursor')
 // }
 //
 // addCursorListeners()
-
-
-window.addEventListener("resize", () => {
-	addCursorListeners()
-})
-
-window.addEventListener("focus", () => {
-	addCursorListeners()
-})
 
 const slidingImageContainer = document.querySelector("#sliding-images")
 
