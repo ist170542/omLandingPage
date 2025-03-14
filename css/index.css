@@ -360,3 +360,9 @@ select > option {
 .tw-pt-2 {
     padding-top: 1rem; /* Add more padding to the top */
 }
+
+@media (max-width: 768px) {
+    .tw-mb-2 {
+        font-size: 1.25rem; /* Adjust the text size for mobile devices */
+    }
+}
