@@ -403,3 +403,47 @@ h2 {
         margin-top: 1rem;
     }
 }
+
+#logo-section {
+    margin-top: 2%;
+    width: 100vw;
+    max-width: 100vw;
+    padding: 0 32px; /* horizontal padding on mobile */
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#logo-container {
+    max-width: 450px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*max-height: 650px;*/
+    margin-top: 0;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    /*max-height: 400px; !* desktop max height *!*/
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    #logo-section {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    #logo-container {
+        max-height: 450px;
+    }
+
+    .logo {
+        max-height: 350px;
+    }
+}
