@@ -405,14 +405,14 @@ h2 {
 }
 
 #logo-section {
-    margin-top: 2%;
-    width: 100vw;
-    max-width: 100vw;
-    padding: 0 32px; /* horizontal padding on mobile */
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
+    margin-top: 0;
+    padding: 20px;
     box-sizing: border-box;
+}
+
+#logo-section img {
+    max-height: 80vh; /* Prevents touching edges */
+    max-width: 80vw;
 }
 
 #logo-container {
@@ -446,4 +446,18 @@ h2 {
     .logo {
         max-height: 350px;
     }
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    max-width: 80vw;
+    max-height: 80vh;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 2vw;
+    box-sizing: border-box;
 }
