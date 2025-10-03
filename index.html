@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Onda Mecânica</title>
     <meta name="description" content="Audio Engeneering Solutions" />
-    <meta name="twitter:title" content="Onda Mecânica" />
-    <meta name="twitter:description" content="Audio Engeneering Solutions" />
     <meta property="og:title" content="Onda Mecânica" />
     <meta property="og:description" content="Audio Engeneering Solutions" />
     <meta property="og:type" content="website" />
@@ -24,7 +22,6 @@
     <div class="collapsible-header animated-collapse max-md:tw-shadow-lg max-md:tw-drop-shadow-xl" id="collapsed-items">
         <div class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base max-md:tw-mt-[30px] max-md:tw-flex-col max-md:tw-place-items-end max-md:tw-gap-5 md:tw-mx-auto md:tw-place-items-center">
             <a class="header-links" href="#services">Services</a>
-<!--            <a class="header-links" href="#about_us">About Us</a>-->
             <a class="header-links" href="#contacts">Contacts</a>
         </div>
     </div>
@@ -47,13 +44,13 @@
         <br><br>
         Our scope of work ranges from audiovisual engineering solutions, fixed sound system installations, room acoustics, audio production and post-production, to creative work and sound design.
         <br><br>
-        From its conception to its diffusion in space, Onda Mecânica embraces each step with great commitment.
+        From <strong>its</strong> conception to <strong>its</strong> diffusion in space Onda Mecânica embraces each step with great commitment.
         <br><br>
 
         <p class="tw-text-2xl md:tw-text-3xl tw-font-semibold tw-text-center tw-text-white tw-mt-4 tw-mb-2">
             Realizing artistic visions
         </p>
-        Artists often have innovative ideas that require engineering expertise to translate into physical form. We provide the structural, mechanical, and other technical solutions to make these visions a reality.
+        <p>Artists often have innovative ideas that require engineering expertise to translate into physical form. We provide the structural, mechanical, and other technical solutions to make these visions a reality.</p>
     </div>
 </section>
 
@@ -67,9 +64,12 @@
     <div class="tw-mt-4 tw-max-w-[800px] tw-text-justify tw-text-gray-200">
 
         <div class="tw-mb-6">
-            <strong class="tw-cursor-pointer tw-block tw-mb-2 tw-ml-4" onclick="toggleDescription('desc1')">Audiovisual Engineering Solutions</strong>
-            <div id="desc1" class="tw-hidden tw-mb-4 tw-pl-4 tw-pt-2">
-                <p><strong>Sound system design, implementation, calibration and operation.</strong> Conceiving and implementing systems to diffuse sound in its various formats, calibrating those systems as to ensure they translate a clear and meaningfull message supported by the technical management during live events, including live mixing control, monitoring and real-time troubleshooting.
+            <strong class="service-header" onclick="toggleDescription('desc1', this)">
+                Audiovisual Engineering Solutions
+                <i class="bi bi-chevron-down accordion-icon"></i>
+            </strong>
+            <div id="desc1" class="tw-hidden tw-mb-4 collapsible-content">
+                <p><strong>Sound system design, implementation, calibration and operation.</strong> Conceiving and implementing systems to diffuse sound in its various formats, calibrating those systems as to ensure they translate a clear and meaningful message supported by the technical management during live events, including live mixing control, monitoring and real-time troubleshooting.
                 </p>
                 <p class="tw-mt-3"><strong>Touring sound services</strong> for touring artists, including technical support and necessary equipment for performances in various venues.
                 </p>
@@ -81,8 +81,11 @@
         </div>
 
         <div class="tw-mb-6">
-            <strong class="tw-cursor-pointer tw-block tw-mb-2 tw-ml-4" onclick="toggleDescription('desc2')">Fixed Sound System Installations</strong>
-            <div id="desc2" class="tw-hidden tw-mb-4 tw-pl-4 tw-pt-2">
+            <strong class="service-header" onclick="toggleDescription('desc2', this)">
+                Fixed Sound System Installations
+                <i class="bi bi-chevron-down accordion-icon"></i>
+            </strong>
+            <div id="desc2" class="tw-hidden tw-mb-4 collapsible-content">
                 <p>Space and its purpose defines the system's integration.
                 </p>
                 <p class="tw-mt-3">Design and implementation of <strong>sound systems for permanent applications</strong> through acoustic modelling ensuring system optimization, stability and regulatory compliance.
@@ -91,8 +94,11 @@
         </div>
 
         <div class="tw-mb-6">
-            <strong class="tw-cursor-pointer tw-block tw-mb-2 tw-ml-4" onclick="toggleDescription('desc6')">Room Acoustics</strong>
-            <div id="desc6" class="tw-hidden tw-mb-4 tw-pl-4 tw-pt-2">
+            <strong class="service-header" onclick="toggleDescription('desc6', this)">
+                Room Acoustics
+                <i class="bi bi-chevron-down accordion-icon"></i>
+            </strong>
+            <div id="desc6" class="tw-hidden tw-mb-4 collapsible-content">
                 <p>Acoustic challenges are met with acoustic solutions.
                 </p>
                 <p class="tw-mt-3"><strong>Sound isolation</strong> ensures proper noise control by minimizing sound propagation between spaces. Acoustic measurements are performed to evaluate sound insulation and noise transmission, based on these results efficient solutions are implemented. Post-installation measurements are conducted to confirm that the isolation meets the required standards.
@@ -103,8 +109,11 @@
         </div>
 
         <div class="tw-mb-6">
-            <strong class="tw-cursor-pointer tw-block tw-mb-2 tw-ml-4" onclick="toggleDescription('desc4')">Audio Production and Post-production</strong>
-            <div id="desc4" class="tw-hidden tw-mb-4 tw-pl-4 tw-pt-2">
+            <strong class="service-header" onclick="toggleDescription('desc4', this)">
+                Audio Production and Post-production
+                <i class="bi bi-chevron-down accordion-icon"></i>
+            </strong>
+            <div id="desc4" class="tw-hidden tw-mb-4 collapsible-content">
                 <p>In the audio production phase, we focus on <strong>recording</strong>, selecting the most suitable sound engineer for each project, with a skill set adapted to the instrumentation and style of the repertoire.
                 </p>
                 <p class="tw-mt-3">During post-production, we handle <strong>editing, mixing</strong>, and <strong>mastering</strong>.
@@ -115,9 +124,12 @@
         </div>
 
         <div class="tw-mb-6">
-            <strong class="tw-cursor-pointer tw-block tw-mb-2 tw-ml-4" onclick="toggleDescription('desc5')">Creative work - Sound design</strong>
-            <div id="desc5" class="tw-hidden tw-mb-4 tw-pl-4 tw-pt-2">
-                Where ideas become audible worlds...
+            <strong class="service-header" onclick="toggleDescription('desc5', this)">
+                Creative work - Sound design
+                <i class="bi bi-chevron-down accordion-icon"></i>
+            </strong>
+            <div id="desc5" class="tw-hidden tw-mb-4 collapsible-content">
+                <p>Where ideas become audible worlds...</p>
             </div>
         </div>
 
@@ -125,9 +137,28 @@
 </section>
 
 <script>
-    function toggleDescription(id) {
+    function toggleDescription(id, headerElement) {
         const desc = document.getElementById(id);
-        desc.classList.toggle('tw-hidden');
+        const isCurrentlyHidden = desc.classList.contains('tw-hidden');
+
+        // 1. Collapse all other open sections
+        // Find all content divs and hide them
+        const allContent = document.querySelectorAll('.collapsible-content');
+        allContent.forEach(content => {
+            content.classList.add('tw-hidden');
+        });
+
+        // Find all header strong tags and remove the 'open' class
+        const allHeaders = document.querySelectorAll('.service-header');
+        allHeaders.forEach(header => {
+            header.classList.remove('open');
+        });
+
+        // 2. Toggle the clicked section (Only open if it was previously hidden)
+        if (isCurrentlyHidden) {
+            desc.classList.remove('tw-hidden');
+            headerElement.classList.add('open');
+        }
     }
 </script>
 

@@ -8,7 +8,7 @@ html {
 
 
 /*a, button {*/
-/*    cursor: none;*/
+/* cursor: none;*/
 /*}*/
 
 header {
@@ -73,26 +73,26 @@ header > .collapsible-header {
 }
 
 /*.cursor {*/
-/*    width: 20px;*/
-/*    height: 20px;*/
-/*    position: fixed;*/
-/*    background-color: transparent;*/
-/*    pointer-events: none; !* Prevent it from interfering with mouse events *!*/
-/*    z-index: 9999;*/
-/*    display: none; */
+/* width: 20px;*/
+/* height: 20px;*/
+/* position: fixed;*/
+/* background-color: transparent;*/
+/* pointer-events: none; !* Prevent it from interfering with mouse events *!*/
+/* z-index: 9999;*/
+/* display: none; */
 /*}*/
 
 /*.cursor-div {*/
-/*    position: absolute;*/
-/*    left: 20px;*/
-/*    top: 20px;*/
-/*    font-size: small;*/
-/*    font-weight: 500;*/
-/*    padding: 4px 8px;*/
-/*    !* border: 1px solid #000; *!*/
-/*    color: #fff;*/
-/*    background-color: #fd343e;*/
-/*    box-shadow: 0px 0px 10px 1px #f40a15d5;*/
+/* position: absolute;*/
+/* left: 20px;*/
+/* top: 20px;*/
+/* font-size: small;*/
+/* font-weight: 500;*/
+/* padding: 4px 8px;*/
+/* !* border: 1px solid #000; *!*/
+/* color: #fff;*/
+/* background-color: #fd343e;*/
+/* box-shadow: 0px 0px 10px 1px #f40a15d5;*/
 /*}*/
 
 .cursive-text {
@@ -217,7 +217,7 @@ select > option {
 #flip-image {
     /* transform-origin: bottom center; */
     transform: perspective(1200px) translateX(0px) translateY(12px) scale(0.8)
-        rotate(0deg) rotateX(70deg);
+    rotate(0deg) rotateX(70deg);
     transition: transform 0.5;
 }
 
@@ -225,7 +225,7 @@ select > option {
     position: relative;
     width: max-content;
     overflow-x: hidden; /* Prevents horizontal scrollbar */
-    /* animation: slideLeft 80s linear infinite; 
+    /* animation: slideLeft 80s linear infinite;
     transition: all 0.5s ease; */
 }
 
@@ -328,14 +328,13 @@ select > option {
         padding-bottom: 5%;
         place-items: end;
         background-color: #000;
-        color: #ffffff;
         box-shadow: -3px 0px 10px #2f2f2f;
     }
 
     #flip-image {
         /* transform-origin: bottom center; */
         transform: perspective(1200px) translateX(0px) translateY(12px) scale(0.8)
-            rotate(0deg) rotateX(40deg);
+        rotate(0deg) rotateX(40deg);
         transition: transform 0.5;
     }
 
@@ -461,3 +460,46 @@ h2 {
     padding: 2vw;
     box-sizing: border-box;
 }
+
+
+/* --- START: New Accordion Styles for Professional Look --- */
+
+.service-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px 8px 16px; /* Add padding for a larger click area */
+    background-color: rgba(255, 255, 255, 0.05); /* Slight background to look clickable */
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.service-header:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.accordion-icon {
+    transition: transform 0.3s ease;
+    font-size: 1.2em;
+}
+
+.service-header.open .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.collapsible-content {
+    padding: 16px 16px 8px 16px;
+    background-color: rgba(255, 255, 255, 0.03); /* Subtle background for opened content */
+    border-radius: 0 0 4px 4px;
+}
+
+/* Adjust the custom utility classes from the HTML that need overriding */
+.tw-ml-4 {
+    margin-left: 0 !important; /* Override Tailwind margin for clean header appearance */
+}
+.tw-pl-4 {
+    padding-left: 0 !important; /* Override Tailwind padding for clean header appearance */
+}
+
+/* --- END: New Accordion Styles for Professional Look --- */
