@@ -31,7 +31,7 @@
 <section id="logo-section" class="tw-w-full tw-flex tw-items-center tw-justify-center tw-bg-black" style="height: calc(100vh - 60px);">
     <div class="logo-wrapper">
         <img
-                src="./assets/images/homepage/logo.png"ii
+                src="./assets/images/homepage/logo.png"
                 alt="Logo"
                 class="tw-max-h-[80vh] tw-max-w-[80vw] tw-object-contain" />
     </div>
@@ -44,12 +44,12 @@
                class="tw-w-full tw-h-full tw-block"
                muted playsinline loop
                poster="./assets/images/homepage/video-poster.jpg"
-               style="max-height: 100vh; object-fit: contain;"> <source src="assets/videos/homepage/Z_OM_UEFA.mp4" type="video/mp4">
+               style="max-height: 100vh; object-fit: contain;">
+            <source src="assets/videos/homepage/Z_OM_UEFA.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 </section>
-
 <section class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
     <div class="tw-mt-8 tw-max-w-[800px] tw-text-justify tw-text-gray-200 tw-text-base md:tw-text-lg tw-leading-relaxed">
 
@@ -202,7 +202,6 @@
 <script src="./scripts/utils.js"></script>
 <script src="index.js"></script>
 <script>
-    // Uses the Intersection Observer API for efficient, modern scroll detection.
     document.addEventListener('DOMContentLoaded', () => {
         const video = document.getElementById('intro-video');
 
@@ -210,20 +209,20 @@
             // Set up the observer
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    // Check if the video is currently visible (intersectionRatio > 0)
+                    // Check if the video is currently visible
                     if (entry.isIntersecting) {
                         // Attempt to play the video when it enters the viewport
+                        // This starts the video and its audio (if not muted).
                         video.play().catch(error => {
-                            // Handle potential error if the browser blocks autoplay
+                            // Video autoplay is often blocked unless muted.
                             console.log('Video autoplay blocked. User interaction required to play.', error);
                         });
-                    } else {
-                        // Pause the video when it leaves the viewport
-                        video.pause();
                     }
+                    // IMPORTANT: Removed video.pause() here. The video continues to play
+                    // even when the user scrolls it out of view.
                 });
             }, {
-                // Option to fire the event when 50% of the video is visible
+                // Fires the event when 50% of the video is visible
                 threshold: 0.5
             });
 
