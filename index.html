@@ -51,7 +51,7 @@
         </div>
     </div>
     <button class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-2xl tw-text-white md:tw-hidden" onclick="toggleHeader()" aria-label="menu" id="collapse-btn"></button>
-</header>
+</header
 
 <section id="logo-section" class="tw-w-full tw-flex tw-items-center tw-justify-center tw-bg-black" style="height: calc(100vh - 60px);">
     <div class="logo-wrapper">
@@ -75,8 +75,12 @@
     </div>
 </section>
 
+<section class="tw-w-full tw-h-[30vh] tw-bg-black">
+    <h2 class="tw-text-xl tw-text-white"></h2>
+</section>
+
 <section id="hero-video-section"
-         class="tw-w-full tw-bg-black tw-py-12 tw-flex tw-items-center tw-justify-center md:tw-min-h-screen">
+         class="tw-w-full tw-bg-black tw-flex tw-items-center tw-justify-center md:tw-min-h-screen">
     <div class="tw-w-full tw-mx-auto tw-px-4 video-container-wrapper">
 
         <video id="intro-video"
@@ -94,9 +98,11 @@
 
     </div>
 </section>
-<section class="tw-relative tw-mt-[5%] tw-flex tw-max-w-[100vw] tw-flex-col tw-overflow-hidden">
-    <div class="sliding-image-container tw-flex tw-h-[350px] tw-w-full tw-gap-4 max-md:tw-h-[250px]" id="sliding-images"></div>
-    <div class="sliding-image-gradient tw-absolute tw-left-0 tw-top-0 tw-z-10 tw-h-full tw-w-full"></div>
+
+<section class="tw-w-full tw-h-[30vh] tw-bg-black">
+
+    <h2 class="tw-text-xl tw-text-white"></h2>
+
 </section>
 
 <section id="services" class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
@@ -176,6 +182,24 @@
     </div>
 </section>
 
+<section class="tw-w-full tw-h-[30vh] tw-bg-black">
+
+    <h2 class="tw-text-xl tw-text-white"></h2>
+
+</section>
+
+
+<section class="tw-relative tw-mt-[5%] tw-flex tw-max-w-[100vw] tw-flex-col tw-overflow-hidden">
+    <div class="sliding-image-container tw-flex tw-h-[350px] tw-w-full tw-gap-4 max-md:tw-h-[250px]" id="sliding-images"></div>
+    <div class="sliding-image-gradient tw-absolute tw-left-0 tw-top-0 tw-z-10 tw-h-full tw-w-full"></div>
+</section>
+
+<section class="tw-w-full tw-h-[30vh] tw-bg-black">
+
+    <h2 class="tw-text-xl tw-text-white"></h2>
+
+</section>
+
 <script>
     function toggleDescription(id, headerElement) {
         const desc = document.getElementById(id);
@@ -199,7 +223,7 @@
         }
     }
 
-    // NEW: Function to toggle the mute state and icon
+    // Function to toggle the mute state and icon
     function toggleMute() {
         const video = document.getElementById('intro-video');
         const buttonIcon = document.querySelector('#mute-toggle-btn i');
