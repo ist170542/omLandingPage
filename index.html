@@ -14,6 +14,31 @@
     <link rel="stylesheet" href="./css/tailwind-build.css" />
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .video-container-wrapper {
+            position: relative; /* Essential for positioning the button */
+        }
+        .mute-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid white;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .mute-button:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body class="tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-bg-[#000] tw-text-white">
 
@@ -37,9 +62,23 @@
     </div>
 </section>
 
+<section class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
+    <div class="tw-mt-8 tw-max-w-[800px] tw-text-justify tw-text-gray-200 tw-text-base md:tw-text-lg tw-leading-relaxed">
+
+        Sound is the propagation of a <strong>mechanical wave</strong> which is created by a vibrating source, and propagated through a medium from one location to another transporting energy.
+        <br><br>
+        Our scope of work ranges from audiovisual engineering solutions, fixed sound system installations, room acoustics, audio production and post-production, to creative work and sound design.
+        <br><br>
+        From its conception to its diffusion in space Onda Mecânica embraces each step with great commitment.
+        <br><br>
+
+    </div>
+</section>
+
 <section id="hero-video-section"
-         class="tw-w-full tw-bg-black tw-py-0 md:tw-py-0 tw-flex tw-items-center tw-justify-center md:tw-min-h-screen">
-    <div class="tw-w-full tw-mx-auto">
+         class="tw-w-full tw-bg-black tw-py-12 tw-flex tw-items-center tw-justify-center md:tw-min-h-screen">
+    <div class="tw-w-full tw-mx-auto tw-px-4 video-container-wrapper">
+
         <video id="intro-video"
                class="tw-w-full tw-h-full tw-block"
                muted playsinline loop
@@ -48,25 +87,13 @@
             <source src="assets/videos/homepage/Z_OM_UEFA.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+
+        <button id="mute-toggle-btn" class="mute-button" onclick="toggleMute()">
+            <i class="bi bi-volume-mute-fill"></i>
+        </button>
+
     </div>
 </section>
-<section class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
-    <div class="tw-mt-8 tw-max-w-[800px] tw-text-justify tw-text-gray-200 tw-text-base md:tw-text-lg tw-leading-relaxed">
-
-        Sound is the propagation of a <strong>mechanical wave</strong> which is created by a vibrating source, and propagated through a medium from one location to another transporting energy.
-        <br><br>
-        Our scope of work ranges from audiovisual engineering solutions, fixed sound system installations, room acoustics, audio production and post-production, to creative work and sound design.
-        <br><br>
-        From <strong>its</strong> conception to <strong>its</strong> diffusion in space Onda Mecânica embraces each step with great commitment.
-        <br><br>
-
-        <p class="tw-text-2xl md:tw-text-3xl tw-font-semibold tw-text-center tw-text-white tw-mt-4 tw-mb-2">
-            Realizing artistic visions
-        </p>
-        <p>Artists often have innovative ideas that require engineering expertise to translate into physical form. We provide the structural, mechanical, and other technical solutions to make these visions a reality.</p>
-    </div>
-</section>
-
 <section class="tw-relative tw-mt-[5%] tw-flex tw-max-w-[100vw] tw-flex-col tw-overflow-hidden">
     <div class="sliding-image-container tw-flex tw-h-[350px] tw-w-full tw-gap-4 max-md:tw-h-[250px]" id="sliding-images"></div>
     <div class="sliding-image-gradient tw-absolute tw-left-0 tw-top-0 tw-z-10 tw-h-full tw-w-full"></div>
@@ -155,13 +182,11 @@
         const isCurrentlyHidden = desc.classList.contains('tw-hidden');
 
         // 1. Collapse all other open sections
-        // Find all content divs and hide them
         const allContent = document.querySelectorAll('.collapsible-content');
         allContent.forEach(content => {
             content.classList.add('tw-hidden');
         });
 
-        // Find all header strong tags and remove the 'open' class
         const allHeaders = document.querySelectorAll('.service-header');
         allHeaders.forEach(header => {
             header.classList.remove('open');
@@ -171,6 +196,22 @@
         if (isCurrentlyHidden) {
             desc.classList.remove('tw-hidden');
             headerElement.classList.add('open');
+        }
+    }
+
+    // NEW: Function to toggle the mute state and icon
+    function toggleMute() {
+        const video = document.getElementById('intro-video');
+        const buttonIcon = document.querySelector('#mute-toggle-btn i');
+
+        if (video.muted) {
+            video.muted = false;
+            buttonIcon.classList.remove('bi-volume-mute-fill');
+            buttonIcon.classList.add('bi-volume-up-fill');
+        } else {
+            video.muted = true;
+            buttonIcon.classList.remove('bi-volume-up-fill');
+            buttonIcon.classList.add('bi-volume-mute-fill');
         }
     }
 </script>
@@ -212,14 +253,12 @@
                     // Check if the video is currently visible
                     if (entry.isIntersecting) {
                         // Attempt to play the video when it enters the viewport
-                        // This starts the video and its audio (if not muted).
                         video.play().catch(error => {
-                            // Video autoplay is often blocked unless muted.
-                            console.log('Video autoplay blocked. User interaction required to play.', error);
+                            // Video autoplay is always allowed if muted.
+                            console.log('Video autoplay blocked (should not happen if video is muted).', error);
                         });
                     }
-                    // IMPORTANT: Removed video.pause() here. The video continues to play
-                    // even when the user scrolls it out of view.
+                    // The video continues to play even when the user scrolls it out of view.
                 });
             }, {
                 // Fires the event when 50% of the video is visible
