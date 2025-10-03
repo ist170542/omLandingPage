@@ -31,9 +31,22 @@
 <section id="logo-section" class="tw-w-full tw-flex tw-items-center tw-justify-center tw-bg-black" style="height: calc(100vh - 60px);">
     <div class="logo-wrapper">
         <img
-                src="./assets/images/homepage/logo.png"
+                src="./assets/images/homepage/logo.png"ii
                 alt="Logo"
                 class="tw-max-h-[80vh] tw-max-w-[80vw] tw-object-contain" />
+    </div>
+</section>
+
+<section id="hero-video-section"
+         class="tw-w-full tw-bg-black tw-py-0 md:tw-py-0 tw-flex tw-items-center tw-justify-center md:tw-min-h-screen">
+    <div class="tw-w-full tw-mx-auto">
+        <video id="intro-video"
+               class="tw-w-full tw-h-full tw-block"
+               muted playsinline loop
+               poster="./assets/images/homepage/video-poster.jpg"
+               style="max-height: 100vh; object-fit: contain;"> <source src="assets/videos/homepage/Z_OM_UEFA.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 </section>
 
@@ -188,4 +201,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js" integrity="sha512-5efjkDjhldlK+BrHauVYJpbjKrtNemLZksZWxd6Wdxvm06dceqWGLLNjZywOkvW7BF032ktHRMUOarbK9d60bg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./scripts/utils.js"></script>
 <script src="index.js"></script>
+<script>
+    // Uses the Intersection Observer API for efficient, modern scroll detection.
+    document.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById('intro-video');
+
+        if (video) {
+            // Set up the observer
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    // Check if the video is currently visible (intersectionRatio > 0)
+                    if (entry.isIntersecting) {
+                        // Attempt to play the video when it enters the viewport
+                        video.play().catch(error => {
+                            // Handle potential error if the browser blocks autoplay
+                            console.log('Video autoplay blocked. User interaction required to play.', error);
+                        });
+                    } else {
+                        // Pause the video when it leaves the viewport
+                        video.pause();
+                    }
+                });
+            }, {
+                // Option to fire the event when 50% of the video is visible
+                threshold: 0.5
+            });
+
+            // Start observing the video element
+            observer.observe(video);
+        }
+    });
+</script>
 </html>
