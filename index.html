@@ -248,10 +248,12 @@
             </strong>
             <div id="desc3" class="tw-hidden tw-mb-4 collapsible-content">
                 <div data-lang="en">
+                    <p class="tw-mt-3">Acoustic challenges are met with acoustic solutions.</p>
                     <p class="tw-mt-3"><strong>Sound isolation</strong> ensures proper noise control by minimising sound propagation between spaces. Acoustic measurements performed to evaluate sound insulation and noise transmission. Based on measurements results efficient solutions are implemented. Post-installation measurements are conducted to confirm that the isolation meets the required standards.</p>
                     <p class="tw-mt-3"><strong>Acoustic treatment</strong> focuses on the acoustic character of a room. Using in-room measurements and standardised evaluation methods to determine the optimal treatment for each space. Solutions are then applied to enhance clarity, balance, and overall acoustic quality, followed by post-treatment measurements to ensure the desired acoustic performance is achieved.</p>
                 </div>
                 <div data-lang="pt">
+                    <p class="tw-mt-3">Desafios acústicos envolvem soluções acústicas.</p>
                     <p class="tw-mt-3"><strong>O isolamento sonoro</strong> assegura o controlo de ruído adequado, minimizando a propagação de som entre espaços contíguos. Realização de medições acústicas para avaliar o isolamento sonoro e a transmissão de ruído. Através dos resultados são implementadas soluções eficientes. Medições posteriores à instalação são utilizadas para confirmar que a solução aplicada cumpre os requisitos do projeto.</p>
                     <p class="tw-mt-3"><strong>O tratamento acústico</strong> tem como foco a assinatura acústica dum espaço. Realização de medições no local e métodos de avaliação normalizados para determinar o tratamento ideal para cada espaço. As soluções são então aplicadas para realçar a transparência, equilíbrio e qualidade acústica geral do espaço, seguidas de medições pós tratamento para assegurar que as soluções projetadas têm a performance desejada.</p>
                 </div>
@@ -305,7 +307,11 @@
     <h2 class="tw-mt-8 tw-text-4xl tw-font-medium" data-lang="pt">Contactos</h2>
     <div class="tw-mt-4 tw-w-full tw-max-w-[800px] tw-text-gray-200">
         <ul class="tw-list-none tw-text-center">
-            <li><strong>Email:</strong> <a href="mailto:info@ondamecanica.com" class="tw-text-gray-200 hover:tw-underline">info@ondamecanica.com</a></li>
+            <li>
+                <strong data-lang="en">Email:</strong>
+                <strong data-lang="pt">Email:</strong>
+                <a href="mailto:info@ondamecanica.com" class="tw-text-gray-200 hover:tw-underline">info@ondamecanica.com</a>
+            </li>
         </ul>
     </div>
 </section>
@@ -393,8 +399,8 @@
                 if (el.tagName === 'A') {
                     // Links do menu (desktop e mobile)
                     el.style.display = 'inline-block';
-                } else if (isServiceHeaderSpan || (el.tagName === 'H2' && el.parentElement.id === 'services')) {
-                    // Títulos de serviço e títulos de secção
+                } else if (isServiceHeaderSpan || el.tagName === 'H2' || el.tagName === 'STRONG') {
+                    // Títulos de serviço e títulos de secção H2, e o label do Email (STRONG)
                     el.style.display = 'block';
                 } else if (el.tagName === 'DIV' || el.tagName === 'P') {
                     // Outros containers de conteúdo
