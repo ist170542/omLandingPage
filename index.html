@@ -4,21 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Onda Mecânica</title>
-    <meta name="description" content="Audio Engeneering Solutions" />
+    <meta name="description" content="Audio Engineering Solutions" />
+
     <meta property="og:title" content="Onda Mecânica" />
-    <meta property="og:description" content="Audio Engeneering Solutions" />
+    <meta property="og:description" content="Audio Engineering Solutions" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://ondamecanica.com/assets/images/homepage/logo_share_thumb.jpg" />
+
     <link rel="shortcut icon" href="./assets/images/homepage/logo.png" type="image/x-icon" />
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" />
-    <link rel="stylesheet" href="./css/tailwind-build.css" />
-    <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="./css/tailwind-build.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+
     <style>
-        .video-container-wrapper {
-            position: relative; /* Essential for positioning the button */
+        /* CORREÇÃO FORÇADA DE DUPLICAÇÃO: Garante que todos os elementos PT estão invisíveis no carregamento */
+        [data-lang="pt"] {
+            display: none !important;
         }
+
+        /* Scroll Jump Correction: Compensa a altura do header fixo (60px) */
+        section:not(#logo-section) {
+            padding-top: 80px;
+            margin-top: -60px;
+        }
+
+        .video-container-wrapper {
+            position: relative;
+        }
+
         .mute-button {
             position: absolute;
             bottom: 20px;
@@ -34,217 +50,243 @@
             line-height: 1;
             transition: background 0.2s, transform 0.2s;
         }
+
         .mute-button:hover {
             background: rgba(0, 0, 0, 0.7);
             transform: scale(1.05);
+        }
+
+        /* Language Switching Styles */
+        .lang-btn {
+            cursor: pointer;
+            font-weight: 500;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .lang-btn.active {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        .lang-btn:hover {
+            opacity: 1;
         }
     </style>
 </head>
 <body class="tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-bg-[#000] tw-text-white">
 
-<header class="tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-px-[10%] max-md:tw-mr-auto md:tw-justify-around">
-    <div class="tw-flex tw-h-[60px] tw-w-[80px]"></div>
-    <div class="collapsible-header animated-collapse max-md:tw-shadow-lg max-md:tw-drop-shadow-xl" id="collapsed-items">
-        <div class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base max-md:tw-mt-[30px] max-md:tw-flex-col max-md:tw-place-items-end max-md:tw-gap-5 md:tw-mx-auto md:tw-place-items-center">
-            <a class="header-links" href="#services">Services</a>
-            <a class="header-links" href="#contacts">Contacts</a>
+<header class="tw-fixed tw-top-0 tw-z-50 tw-flex tw-h-[60px] tw-w-full tw-items-center tw-justify-between tw-bg-black/80 tw-px-[5%] tw-backdrop-blur-sm md:tw-justify-around">
+    <div class="tw-hidden md:tw-block tw-w-[80px]"></div>
+
+    <div class="collapsible-header animated-collapse max-md:tw-hidden" id="collapsed-items">
+        <div class="tw-flex tw-gap-8 tw-text-base md:tw-place-items-center">
+
+            <a class="header-links" href="#about" data-lang="en">About Us</a>
+            <a class="header-links" href="#works" data-lang="en">Selected Works</a>
+            <a class="header-links" href="#services" data-lang="en">Services</a>
+            <a class="header-links" href="#contacts" data-lang="en">Contacts</a>
+
+            <a class="header-links" href="#about" data-lang="pt">Sobre Nós</a>
+            <a class="header-links" href="#works" data-lang="pt">Trabalhos</a>
+            <a class="header-links" href="#services" data-lang="pt">Serviços</a>
+            <a class="header-links" href="#contacts" data-lang="pt">Contactos</a>
+
+            <div class="tw-ml-4 tw-flex tw-gap-2 tw-border-l tw-border-gray-600 tw-pl-4">
+                <span class="lang-btn active" onclick="switchLanguage('en')" id="btn-en">EN</span>
+                <span class="tw-text-gray-500">|</span>
+                <span class="lang-btn" onclick="switchLanguage('pt')" id="btn-pt">PT</span>
+            </div>
         </div>
     </div>
-    <button class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-2xl tw-text-white md:tw-hidden" onclick="toggleHeader()" aria-label="menu" id="collapse-btn"></button>
+
+    <button class="bi bi-list tw-text-2xl tw-text-white md:tw-hidden" onclick="toggleHeader()" aria-label="menu" id="collapse-btn"></button>
 </header>
 
-<section id="logo-section" class="tw-w-full tw-flex tw-items-center tw-justify-center tw-bg-black" style="height: calc(100vh - 60px);">
+<div id="mobile-menu" class="tw-fixed tw-top-[60px] tw-left-0 tw-w-full tw-bg-black tw-z-40 tw-hidden tw-flex-col tw-items-center tw-gap-6 tw-py-8 md:tw-hidden">
+    <a class="header-links" href="#about" onclick="toggleHeader()" data-lang="en">About Us</a>
+    <a class="header-links" href="#works" onclick="toggleHeader()" data-lang="en">Selected Works</a>
+    <a class="header-links" href="#services" onclick="toggleHeader()" data-lang="en">Services</a>
+    <a class="header-links" href="#contacts" onclick="toggleHeader()" data-lang="en">Contacts</a>
+
+    <a class="header-links" href="#about" onclick="toggleHeader()" data-lang="pt">Sobre Nós</a>
+    <a class="header-links" href="#works" onclick="toggleHeader()" data-lang="pt">Trabalhos</a>
+    <a class="header-links" href="#services" onclick="toggleHeader()" data-lang="pt">Serviços</a>
+    <a class="header-links" href="#contacts" onclick="toggleHeader()" data-lang="pt">Contactos</a>
+
+    <div class="tw-flex tw-gap-4 tw-mt-4">
+        <span class="lang-btn active" onclick="switchLanguage('en'); toggleHeader()" id="mobile-btn-en">EN</span>
+        <span>|</span>
+        <span class="lang-btn" onclick="switchLanguage('pt'); toggleHeader()" id="mobile-btn-pt">PT</span>
+    </div>
+</div>
+
+<section id="logo-section" class="tw-w-full tw-flex tw-items-center tw-justify-center tw-bg-black" style="height: 100vh;">
     <div class="logo-wrapper">
-        <img
-                src="./assets/images/homepage/logo.png"
-                alt="Logo"
-                class="tw-max-h-[80vh] tw-max-w-[80vw] tw-object-contain" />
+        <img src="./assets/images/homepage/logo.png" alt="Logo" class="tw-max-h-[80vh] tw-max-w-[80vw] tw-object-contain" />
     </div>
 </section>
 
-<section class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
+<section id="about" class="tw-relative tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
     <div class="tw-mt-8 tw-max-w-[800px] tw-text-justify tw-text-gray-200 tw-text-base md:tw-text-lg tw-leading-relaxed">
 
-        Sound is the propagation of a <strong>mechanical wave</strong> which is created by a vibrating source, and propagated through a medium from one location to another transporting energy.
-        <br><br>
-        Our scope of work ranges from audiovisual engineering solutions, fixed sound system installations, room acoustics, audio production and post-production, to creative work and sound design.
-        <br><br>
-        From its conception to its diffusion in space Onda Mecânica embraces each step with great commitment.
-        <br><br>
+        <div data-lang="en">
+            <p class="tw-mb-6">
+                Sound is the propagation of a <strong>mechanical wave</strong> which is created by a vibrating source and propagated through a medium from one location to another, transporting energy.
+            </p>
+            <p class="tw-mb-6">
+                Our scope of work ranges from audiovisual engineering solutions, fixed sound system installations, room acoustics, audio production and post-production to creative work and sound design.
+            </p>
+            <p>
+                From its conception to its diffusion in space Onda Mecânica embraces each step with great commitment.
+            </p>
+        </div>
+
+        <div data-lang="pt">
+            <p class="tw-mb-6">
+                O som é a propagação de uma <strong>onda mecânica</strong> criada por uma fonte vibratória que se propaga através de um meio de um local para outro, transportando energia.
+            </p>
+            <p class="tw-mb-6">
+                O nosso objeto de trabalho abrange desde soluções de engenharia audiovisual, instalações de sistemas de som fixos, acústica de salas, produção e pós-produção de áudio, até trabalhos criativos e sound design.
+            </p>
+            <p>
+                Desde a sua conceção até à sua difusão no espaço, a Onda Mecânica abraça cada etapa com determinação.
+            </p>
+        </div>
 
     </div>
 </section>
 
-<section class="tw-w-full tw-h-[30vh] tw-bg-black">
-    <h2 class="tw-text-xl tw-text-white"></h2>
-</section>
+<section class="tw-w-full tw-h-[30vh] tw-bg-black"></section>
 
-<section id="hero-video-section"
-         class="tw-w-full tw-bg-black tw-flex tw-items-center tw-justify-center md:tw-min-h-screen">
+<section class="tw-w-full tw-h-[15vh] tw-bg-black"></section>
+
+<section id="works" class="tw-w-full tw-bg-black tw-flex tw-items-center tw-justify-center md:tw-min-h-screen">
     <div class="tw-w-full tw-mx-auto tw-px-4 video-container-wrapper">
-
-        <video id="intro-video"
-               class="tw-w-full tw-h-full tw-block"
-               muted playsinline loop
-               poster="./assets/images/homepage/video-poster.jpg"
-               style="max-height: 100vh; object-fit: contain;">
+        <video id="intro-video" class="tw-w-full tw-h-full tw-block" muted playsinline loop poster="./assets/images/homepage/video-poster.jpg" style="max-height: 100vh; object-fit: contain;">
             <source src="assets/videos/homepage/Z_OM_UEFA.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-
         <button id="mute-toggle-btn" class="mute-button" onclick="toggleMute()">
             <i class="bi bi-volume-mute-fill"></i>
         </button>
-
     </div>
 </section>
 
-<section class="tw-w-full tw-h-[30vh] tw-bg-black">
-
-    <h2 class="tw-text-xl tw-text-white"></h2>
-
-</section>
+<section class="tw-w-full tw-h-[15vh] tw-bg-black"></section>
 
 <section id="services" class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
-    <h2 class="tw-mt-8 tw-text-4xl tw-font-medium">Services</h2>
-    <div class="tw-mt-4 tw-max-w-[800px] tw-text-justify tw-text-gray-200">
+    <h2 class="tw-mt-8 tw-text-4xl tw-font-medium" data-lang="en">Services</h2>
+    <h2 class="tw-mt-8 tw-text-4xl tw-font-medium" data-lang="pt">Serviços</h2>
+
+    <div class="tw-mt-4 tw-w-full tw-max-w-[800px] tw-text-justify tw-text-gray-200">
 
         <div class="tw-mb-6">
             <strong class="service-header" onclick="toggleDescription('desc1', this)">
-                Audiovisual Engineering Solutions
+                <span data-lang="en">Audiovisual Engineering Solutions</span>
+                <span data-lang="pt">Soluções de Engenharia Audiovisual</span>
                 <i class="bi bi-chevron-down accordion-icon"></i>
             </strong>
             <div id="desc1" class="tw-hidden tw-mb-4 collapsible-content">
-                <p><strong>Sound system design, implementation, calibration and operation.</strong> Conceiving and implementing systems to diffuse sound in its various formats, calibrating those systems as to ensure they translate a clear and meaningful message supported by the technical management during live events, including live mixing control, monitoring and real-time troubleshooting.
-                </p>
-                <p class="tw-mt-3"><strong>Touring sound services</strong> for touring artists, including technical support and necessary equipment for performances in various venues.
-                </p>
-                <p class="tw-mt-3"><strong>Lighting and video solutions</strong> for any type of event including technical drawings and system design, installation and setup, and full operation during the event.
-                </p>
-                <p class="tw-mt-3"><strong>Technical direction and production:</strong> coordinating all technical aspects of a live event or providing on going technical direction for a venue or concert hall, from preparation to execution.
-                </p>
+                <div data-lang="en">
+                    <p class="tw-mt-3"><strong>Technical direction and production:</strong> Coordinating all technical aspects of a live event or providing on going technical direction for a venue or concert hall, from preparation to execution.</p>
+                    <p class="tw-mt-3"><strong>Sound system design, implementation, calibration and operation.</strong> Conceiving and implementing systems to diffuse sound in its various formats, calibrating those systems as to ensure they translate a clear and meaningful message supported by the technical management during live events, including live mixing control, monitoring and real-time troubleshooting.</p>
+                    <p class="tw-mt-3"><strong>Sound for touring artists</strong>, including technical support and necessary equipment for performances in various venues.</p>
+                    <p class="tw-mt-3"><strong>Lighting and video solutions</strong> for any type of event including technical drawings and system design, installation and setup, and full operation during the event.</p>
+                </div>
+                <div data-lang="pt">
+                    <p class="tw-mt-3"><strong>Direção e produção técnica:</strong> Coordenação de toda a componente técnica de eventos ao vivo ou direção técnica contínua para espaços, desde a preparação à execução.</p>
+                    <p class="tw-mt-3"><strong>Desenho, implementação, calibração e operação de sistemas de som.</strong> Conceção e implementação de sistemas para difusão sonora nos seus variados formatos, calibração desses sistemas assegurando a transmissão da mensagem de forma clara e relevante suportada pela gestão técnica durante eventos ao vivo, incluindo mistura de frente e de monição, diagnóstico e ajustes em tempo real.</p>
+                    <p class="tw-mt-3"><strong>Som para artistas em digressão</strong> incluindo suporte técnico e equipamento necessário para atuações em diversos espaços.</p>
+                    <p class="tw-mt-3"><strong>Soluções de luz e vídeo</strong> para qualquer tipo de evento incluindo desenhos técnicos, desenho de sistemas, instalação e operação durante o evento.</p>
+                </div>
             </div>
         </div>
 
         <div class="tw-mb-6">
             <strong class="service-header" onclick="toggleDescription('desc2', this)">
-                Fixed Sound System Installations
+                <span data-lang="en">Fixed Sound System Installations</span>
+                <span data-lang="pt">Instalações de Sistemas de Som Fixos</span>
                 <i class="bi bi-chevron-down accordion-icon"></i>
             </strong>
             <div id="desc2" class="tw-hidden tw-mb-4 collapsible-content">
-                <p>Space and its purpose defines the system's integration.
-                </p>
-                <p class="tw-mt-3">Design and implementation of <strong>sound systems for permanent applications</strong> through acoustic modelling ensuring system optimization, stability and regulatory compliance.
-                </p>
+                <div data-lang="en">
+                    <p class="tw-mt-3">Space and its purpose define the systems integration.</p>
+                    <p class="tw-mt-3">Design and implementation of sound systems for permanent applications through acoustic modelling ensuring system optimisation, stability and regulatory compliance.</p>
+                </div>
+                <div data-lang="pt">
+                    <p class="tw-mt-3">O espaço e o seu propósito definem a integração do sistema.</p>
+                    <p class="tw-mt-3">Desenho e implementação de sistemas de som de aplicação permanente através de modelação acústica assegurando a otimização e estabilidade do sistema cumprindo com a conformidade regulamentar.</p>
+                </div>
             </div>
         </div>
 
         <div class="tw-mb-6">
-            <strong class="service-header" onclick="toggleDescription('desc6', this)">
-                Room Acoustics
+            <strong class="service-header" onclick="toggleDescription('desc3', this)">
+                <span data-lang="en">Room Acoustics</span>
+                <span data-lang="pt">Acústica de Salas</span>
                 <i class="bi bi-chevron-down accordion-icon"></i>
             </strong>
-            <div id="desc6" class="tw-hidden tw-mb-4 collapsible-content">
-                <p>Acoustic challenges are met with acoustic solutions.
-                </p>
-                <p class="tw-mt-3"><strong>Sound isolation</strong> ensures proper noise control by minimizing sound propagation between spaces. Acoustic measurements are performed to evaluate sound insulation and noise transmission, based on these results efficient solutions are implemented. Post-installation measurements are conducted to confirm that the isolation meets the required standards.
-                </p>
-                <p class="tw-mt-3"><strong>Acoustic treatment</strong> focuses on the acoustic character of a room using in-room measurements and standardized evaluation methods to determine the optimal treatment for each space. Solutions are then applied to enhance clarity, balance, and overall acoustic quality, followed by post-treatment measurements to ensure the desired acoustic performance is achieved.
-                </p>
+            <div id="desc3" class="tw-hidden tw-mb-4 collapsible-content">
+                <div data-lang="en">
+                    <p class="tw-mt-3">Acoustic challenges are met with acoustic solutions.</p>
+                    <p class="tw-mt-3"><strong>Sound isolation</strong> ensures proper noise control by minimising sound propagation between spaces. Acoustic measurements performed to evaluate sound insulation and noise transmission. Based on measurements results efficient solutions are implemented. Post-installation measurements are conducted to confirm that the isolation meets the required standards.</p>
+                    <p class="tw-mt-3"><strong>Acoustic treatment</strong> focuses on the acoustic character of a room. Using in-room measurements and standardised evaluation methods to determine the optimal treatment for each space. Solutions are then applied to enhance clarity, balance, and overall acoustic quality, followed by post-treatment measurements to ensure the desired acoustic performance is achieved.</p>
+                </div>
+                <div data-lang="pt">
+                    <p class="tw-mt-3">Desafios acústicos envolvem soluções acústicas.</p>
+                    <p class="tw-mt-3"><strong>O isolamento sonoro</strong> assegura o controlo de ruído adequado, minimizando a propagação de som entre espaços contíguos. Realização de medições acústicas para avaliar o isolamento sonoro e a transmissão de ruído. Através dos resultados são implementadas soluções eficientes. Medições posteriores à instalação são utilizadas para confirmar que a solução aplicada cumpre os requisitos do projeto.</p>
+                    <p class="tw-mt-3"><strong>O tratamento acústico</strong> tem como foco a assinatura acústica dum espaço. Realização de medições no local e métodos de avaliação normalizados para determinar o tratamento ideal para cada espaço. As soluções são então aplicadas para realçar a transparência, equilíbrio e qualidade acústica geral do espaço, seguidas de medições pós tratamento para assegurar que as soluções projetadas têm a performance desejada.</p>
+                </div>
             </div>
         </div>
 
         <div class="tw-mb-6">
             <strong class="service-header" onclick="toggleDescription('desc4', this)">
-                Audio Production and Post-production
+                <span data-lang="en">Audio Production and Post-production</span>
+                <span data-lang="pt">Produção e Pós-produção de Áudio</span>
                 <i class="bi bi-chevron-down accordion-icon"></i>
             </strong>
             <div id="desc4" class="tw-hidden tw-mb-4 collapsible-content">
-                <p>In the audio production phase, we focus on <strong>recording</strong>, selecting the most suitable sound engineer for each project, with a skill set adapted to the instrumentation and style of the repertoire.
-                </p>
-                <p class="tw-mt-3">During post-production, we handle <strong>editing, mixing</strong>, and <strong>mastering</strong>.
-                </p>
-                <p class="tw-mt-3">All stages can be executed individually or as a complete workflow, according to the project's requirements.
-                </p>
+                <div data-lang="en">
+                    <p class="tw-mt-3">In the audio production phase, we focus on recording, selecting the most suitable sound engineer for each project, with a skill set adapted to the instrumentation and style of the repertoire.</p>
+                    <p class="tw-mt-3">During post-production, we handle editing, mixing, and mastering.</p>
+                    <p class="tw-mt-3">All stages can be executed individually or as a complete workflow, according to the projects' requirements.</p>
+                </div>
+                <div data-lang="pt">
+                    <p class="tw-mt-3">Na fase de produção focamo-nos na gravação selecionando o engenheiro de som mais indicado para cada projeto com competências adaptadas à instrumentação e estilo do repertório.</p>
+                    <p class="tw-mt-3">Durante a pós-produção asseguramos a edição, mistura e masterização do material gravado.</p>
+                    <p class="tw-mt-3">Todas as etapas podem ser executadas individualmente ou inseridas num fluxo de trabalho contínuo de acordo com os requisitos de cada projeto.</p>
+                </div>
             </div>
         </div>
 
         <div class="tw-mb-6">
             <strong class="service-header" onclick="toggleDescription('desc5', this)">
-                Creative work - Sound design
+                <span data-lang="en">Creative work & Sound design</span>
+                <span data-lang="pt">Trabalho Criativo e Sound Design</span>
                 <i class="bi bi-chevron-down accordion-icon"></i>
             </strong>
             <div id="desc5" class="tw-hidden tw-mb-4 collapsible-content">
-                <p>Where ideas become audible worlds...</p>
+                <p class="tw-mt-3 tw-italic" data-lang="en">Where ideas become audible worlds...</p>
+                <p class="tw-mt-3 tw-italic" data-lang="pt">Onde ideias se tornam mundos sonoros...</p>
             </div>
         </div>
 
     </div>
 </section>
 
-<section class="tw-w-full tw-h-[30vh] tw-bg-black">
+<section class="tw-w-full tw-h-[15vh] tw-bg-black"></section>
 
-    <h2 class="tw-text-xl tw-text-white"></h2>
-
-</section>
-
-
-<section class="tw-relative tw-mt-[5%] tw-flex tw-max-w-[100vw] tw-flex-col tw-overflow-hidden">
+<section class="tw-relative tw-flex tw-max-w-[100vw] tw-flex-col tw-overflow-hidden">
     <div class="sliding-image-container tw-flex tw-h-[350px] tw-w-full tw-gap-4 max-md:tw-h-[250px]" id="sliding-images"></div>
     <div class="sliding-image-gradient tw-absolute tw-left-0 tw-top-0 tw-z-10 tw-h-full tw-w-full"></div>
 </section>
 
-<section class="tw-w-full tw-h-[30vh] tw-bg-black">
-
-    <h2 class="tw-text-xl tw-text-white"></h2>
-
-</section>
-
-<script>
-    function toggleDescription(id, headerElement) {
-        const desc = document.getElementById(id);
-        const isCurrentlyHidden = desc.classList.contains('tw-hidden');
-
-        // 1. Collapse all other open sections
-        const allContent = document.querySelectorAll('.collapsible-content');
-        allContent.forEach(content => {
-            content.classList.add('tw-hidden');
-        });
-
-        const allHeaders = document.querySelectorAll('.service-header');
-        allHeaders.forEach(header => {
-            header.classList.remove('open');
-        });
-
-        // 2. Toggle the clicked section (Only open if it was previously hidden)
-        if (isCurrentlyHidden) {
-            desc.classList.remove('tw-hidden');
-            headerElement.classList.add('open');
-        }
-    }
-
-    // Function to toggle the mute state and icon
-    function toggleMute() {
-        const video = document.getElementById('intro-video');
-        const buttonIcon = document.querySelector('#mute-toggle-btn i');
-
-        if (video.muted) {
-            video.muted = false;
-            buttonIcon.classList.remove('bi-volume-mute-fill');
-            buttonIcon.classList.add('bi-volume-up-fill');
-        } else {
-            video.muted = true;
-            buttonIcon.classList.remove('bi-volume-up-fill');
-            buttonIcon.classList.add('bi-volume-mute-fill');
-        }
-    }
-</script>
-
 <section id="contacts" class="tw-relative tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-4">
-    <h2 class="tw-mt-8 tw-text-4xl tw-font-medium">Contacts</h2>
+    <h2 class="tw-mt-8 tw-text-4xl tw-font-medium" data-lang="en">Contacts</h2>
+    <h2 class="tw-mt-8 tw-text-4xl tw-font-medium" data-lang="pt">Contactos</h2>
     <div class="tw-mt-4 tw-w-full tw-max-w-[800px] tw-text-gray-200">
-        <ul class="tw-list-none">
-            <li><strong>Email:</strong> <a href="mailto:info@ondamecanica.com" class="tw-text-gray-200">info@ondamecanica.com</a></li>
+        <ul class="tw-list-none tw-text-center">
+            <li><strong>Email:</strong> <a href="mailto:info@ondamecanica.com" class="tw-text-gray-200 hover:tw-underline">info@ondamecanica.com</a></li>
         </ul>
     </div>
 </section>
@@ -261,37 +303,121 @@
         Onda Mecânica™ 2025
     </div>
 </footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js" integrity="sha512-5efjkDjhldlK+BrHauVYJpbjKrtNemLZksZWxd6Wdxvm06dceqWGLLNjZywOkvW7BF032ktHRMUOarbK9d60bg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 <script src="./scripts/utils.js"></script>
 <script src="index.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const video = document.getElementById('intro-video');
 
+<script>
+    /* --- Lógica Menu Mobile --- */
+    function toggleHeader() {
+        const menu = document.getElementById('mobile-menu');
+        if (menu.classList.contains('tw-hidden')) {
+            menu.classList.remove('tw-hidden');
+            menu.classList.add('tw-flex');
+        } else {
+            menu.classList.add('tw-hidden');
+            menu.classList.remove('tw-flex');
+        }
+    }
+
+    /* --- Lógica dos Accordions (Serviços) --- */
+    function toggleDescription(id, headerElement) {
+        const desc = document.getElementById(id);
+        const isCurrentlyHidden = desc.classList.contains('tw-hidden');
+
+        // Fechar todos
+        document.querySelectorAll('.collapsible-content').forEach(content => {
+            content.classList.add('tw-hidden');
+        });
+        document.querySelectorAll('.service-header').forEach(header => {
+            header.classList.remove('open');
+        });
+
+        // Abrir o clicado (se estava fechado)
+        if (isCurrentlyHidden) {
+            desc.classList.remove('tw-hidden');
+            headerElement.classList.add('open');
+        }
+    }
+
+    /* --- Lógica Som Vídeo --- */
+    function toggleMute() {
+        const video = document.getElementById('intro-video');
+        const buttonIcon = document.querySelector('#mute-toggle-btn i');
+        if (video.muted) {
+            video.muted = false;
+            buttonIcon.classList.remove('bi-volume-mute-fill');
+            buttonIcon.classList.add('bi-volume-up-fill');
+        } else {
+            video.muted = true;
+            buttonIcon.classList.remove('bi-volume-up-fill');
+            buttonIcon.classList.add('bi-volume-mute-fill');
+        }
+    }
+
+    /* --- Lógica Troca de Língua (PT/EN) - Agora usa style.display para anular o CSS forçado */
+    function switchLanguage(lang) {
+        // Encontrar todos os elementos que têm atributo data-lang
+        const allElements = document.querySelectorAll('[data-lang]');
+
+        allElements.forEach(el => {
+            if (el.getAttribute('data-lang') === lang) {
+                // Mostrar elemento: Define o display conforme o tipo de elemento (anula o CSS forçado)
+                if (el.tagName === 'A' || el.tagName === 'SPAN' || el.classList.contains('lang-btn')) {
+                    el.style.display = 'inline-block';
+                } else {
+                    el.style.display = 'block';
+                }
+            } else {
+                // Esconder elemento: Força o display: none (anula qualquer outro display)
+                el.style.display = 'none';
+            }
+        });
+
+        // Atualizar estilo dos botões (Bold/Opacidade)
+        const btnPt = document.getElementById('btn-pt');
+        const btnEn = document.getElementById('btn-en');
+        const mobileBtnPt = document.getElementById('mobile-btn-pt');
+        const mobileBtnEn = document.getElementById('mobile-btn-en');
+
+        if (lang === 'pt') {
+            if(btnPt) btnPt.classList.add('active');
+            if(btnEn) btnEn.classList.remove('active');
+            if(mobileBtnPt) mobileBtnPt.classList.add('active');
+            if(mobileBtnEn) mobileBtnEn.classList.remove('active');
+        } else {
+            if(btnEn) btnEn.classList.add('active');
+            if(btnPt) btnPt.classList.remove('active');
+            if(mobileBtnEn) mobileBtnEn.classList.add('active');
+            if(mobileBtnPt) mobileBtnPt.classList.remove('active');
+        }
+
+        // Guardar preferência no browser
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    /* --- Inicialização (Autoplay e Língua) --- */
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Iniciar Vídeo quando visível
+        const video = document.getElementById('intro-video');
         if (video) {
-            // Set up the observer
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    // Check if the video is currently visible
                     if (entry.isIntersecting) {
-                        // Attempt to play the video when it enters the viewport
-                        video.play().catch(error => {
-                            // Video autoplay is always allowed if muted.
-                            console.log('Video autoplay blocked (should not happen if video is muted).', error);
-                        });
+                        video.play().catch(e => console.log('Autoplay blocked:', e));
                     }
-                    // The video continues to play even when the user scrolls it out of view.
                 });
-            }, {
-                // Fires the event when 50% of the video is visible
-                threshold: 0.5
-            });
-
-            // Start observing the video element
+            }, { threshold: 0.5 });
             observer.observe(video);
         }
+
+        // 2. Carregar Língua Preferida (ou default EN)
+        const savedLang = localStorage.getItem('preferredLang') || 'en';
+        // Garantir que a língua inicial corre para esconder o PT se estiver em EN (e vice-versa)
+        switchLanguage(savedLang);
     });
 </script>
+</body>
 </html>
